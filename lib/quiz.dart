@@ -11,17 +11,17 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  Widget? activeScreen;
+  var activeScreen = "start-screen";
 
   @override
   void initState() {
-    activeScreen = StartScreen(switchScreen);
+    activeScreen = "start-screen";
     super.initState();
   }
 
   void switchScreen() {
     setState(() {
-      activeScreen = QuestionsScreen();
+      activeScreen = "questions-screen";
     });
   }
 
@@ -29,7 +29,12 @@ class _QuizState extends State<Quiz> {
   Widget build(contax) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(backgroundColor: Colors.deepPurple, body: activeScreen),
+      home: Scaffold(
+        backgroundColor: Colors.deepPurple,
+        body: activeScreen == "start-screen"
+            ? StartScreen(switchScreen)
+            : QuestionsScreen(),
+      ),
     );
   }
 } 
