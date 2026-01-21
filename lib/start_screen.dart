@@ -5,11 +5,11 @@ class StartScreen extends StatelessWidget {
   const StartScreen(this.startQuiz, {super.key});
   final void Function() startQuiz;
   @override
-  Widget build(contax) { 
+  Widget build(contax) {
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        children: [ 
+        children: [
           //
           Image.asset(
             "assets/images/quiz-logo.png",
