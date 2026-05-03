@@ -32,26 +32,33 @@ class _QuizState extends State<Quiz> {
     }
   }
 
+  void restartQuiz(){
+    setState(() {
+      selectedAnswer=[];
+      activeScreen='questions_screen';
+    });
+  }
+
   @override
   Widget build(contax) {
     // one-Option
     // final screenWidget = activeScreen == "start-screen"
     //     ? StartScreen(switchScreen)
     //     : QuestionsScreen(onSelectAnswer: chooseAnswer);
-    Widget screenWidget =StartScreen(switchScreen);
+    Widget screenWidget = StartScreen(switchScreen);
 
-    if (activeScreen=="questions-screen"){
-      screenWidget=QuestionsScreen(onSelectAnswer: chooseAnswer);
+    if (activeScreen == "questions-screen") {
+      screenWidget = QuestionsScreen(onSelectAnswer: chooseAnswer);
     }
 
-    if(activeScreen=='results-screen'){
-      screenWidget=ResultsScreen(choosenAnswers: selectedAnswer);
+    if (activeScreen == 'results-screen') {
+      screenWidget = ResultsScreen(choosenAnswers: selectedAnswer,onRestart: restartQuiz,);
     }
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: const Color.fromARGB(255, 76, 42, 133),
         body: screenWidget,
         // >>onother option
         // activeScreen == "start-screen"
